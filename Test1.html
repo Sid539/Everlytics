@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .td1 {
+                padding: 15px;
+                text-align: right;
+            }
+            .td2{
+                text-align: left;
+            }
+            input{
+                width: 100%;
+                font-size: 20px;
+                margin-top: 2px;
+                margin-bottom: 2px;
+            }
+        </style>
+    </head>
+<body>
+    <table style=" font-size: larger;">
+        <form >
+            <tr>
+                <td class="td1">
+                    Select your source:|
+                </td>
+                <td style="text-align: right ;">
+                    Google Cloud Storage
+                </td>
+            </tr>
+            <tr>
+                <td class="td1">
+                    <label for="name">
+                        Provide name for pipeline:|
+                    </label>
+                </td>
+                <td class="td2"><input id="text" type="text" minlength="5" id="name" placeholder="e.g., cust_shop_energy_gkateway001" style=" width: 100%; background-color:lightgrey; border: none;" required/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td1"><label for="project">
+                        GCS project name:|
+                    </label>
+                </td>
+                <td><input type="text" id="text" minlength="5" placeholder="project-id" style="background-color:lightgrey ; border: none;" required/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td1"><label for="bucket">
+                        GCS bucket name:|
+                    </label>
+                </td>
+                <td><input type="text" id="text" minlength="5" placeholder="gs://your-bucket" style=" background-color:lightgrey ; border: none;" required/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td1"><label for="cloud">
+                        Input Cloud Storage File(s):|
+                    </label>
+                </td>
+                <td><input type="text" id="text" minlength="5" placeholder="GCS location of your files" style="background-color:lightgrey ; border: none;" required/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td1"><label for="cred">
+                    GCS credentials:|
+                    </label>
+                </td>
+                <td><input type="text" id="text" minlength="5" style="background-color:gray ; border: none;" required/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td1"><label for="run">
+                        Run Every:|
+                    </label>
+                </td>
+                <td><input type="text" id="text" minlength="5" placeholder="(in minutes)" style="background-color:lightgrey ; border: none;" required/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td1"><button onclick="validate()" style="background-color:rgb(7, 123, 161); width: 70%; border: none; padding: 10px;">Create</button>
+                </td>
+                <td><button style="background-color:rgb(7, 123, 161); width: 100%; border: none; padding: 10px;">Cancel</button>
+                </td>
+            </tr>
+        </form>
+    </table>
+    <script type="text/javascript">
+        function validate(){
+            var regex= /[^a-zA-Z0-9\-\/]/;
+            var isvalid = regex.test(document.getElementById("text").value);
+            if(!isvalid){
+                alert("Contains Special Characters");
+            }
+            else{
+                alert("Does not contains special characters")
+            }
+            return isvalid;
+ 
+            var regex2 = /^[\W_\s].*$|^.*[\W_\s]$/;
+            var isvalid2 = regex2.test(document.getElementById("text").value);
+            if(!isvalid2){
+                alert("Contains Special in start or in end Characters");
+            }
+            else{
+                alert("Does not contains special characters")
+            }
+            return isvalid;
+ 
+        }
+    </script>
+</body>
+ 
+</html>
+ 
